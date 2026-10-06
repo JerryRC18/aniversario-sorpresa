@@ -119,12 +119,12 @@
         {
           label: "Café en terraza, mirándonos sin prisa",
           hint: "Luz suave, plaza abajo, solo nosotros",
-          scores: { sma: 2, gto: 1, maz: 0 },
+          scores: { sma: 3, gto: 1, maz: 0 },
         },
         {
           label: "Perdernos de la mano entre callejones",
           hint: "Risas, sorpresas y fotos espontáneas",
-          scores: { sma: 1, gto: 2, maz: 0 },
+          scores: { sma: 1, gto: 3, maz: 0 },
         },
         {
           label: "Abrir la ventana al silencio y al bosque",
@@ -140,12 +140,12 @@
         {
           label: "Cena íntima, luz tenue y una copa",
           hint: "Conversación larga, sin interrupciones",
-          scores: { sma: 2, gto: 1, maz: 0 },
+          scores: { sma: 3, gto: 1, maz: 0 },
         },
         {
           label: "Salir a cantar, caminar y reír por la ciudad",
           hint: "Energía, música y anécdotas",
-          scores: { sma: 0, gto: 2, maz: 0 },
+          scores: { sma: 0, gto: 3, maz: 0 },
         },
         {
           label: "Fogata, estrellas y susurros",
@@ -161,12 +161,12 @@
         {
           label: "Cantera, cúpulas y atardecer dorado",
           hint: "Belleza que se siente de película",
-          scores: { sma: 2, gto: 1, maz: 0 },
+          scores: { sma: 3, gto: 1, maz: 0 },
         },
         {
           label: "Un valle lleno de color y balcones",
           hint: "Como un escenario vivo",
-          scores: { sma: 1, gto: 2, maz: 0 },
+          scores: { sma: 1, gto: 3, maz: 0 },
         },
         {
           label: "Montañas, niebla y pinos",
@@ -182,12 +182,12 @@
         {
           label: "Detalles bonitos y ambiente especial",
           hint: "Algo boutique, íntimo, memorable",
-          scores: { sma: 2, gto: 0, maz: 1 },
+          scores: { sma: 3, gto: 0, maz: 0 },
         },
         {
           label: "Experiencias que se vuelvan historia nuestra",
           hint: "Lo inesperado, lo que contaremos después",
-          scores: { sma: 0, gto: 2, maz: 0 },
+          scores: { sma: 0, gto: 3, maz: 0 },
         },
         {
           label: "Descansar de verdad, solo tú y yo",
@@ -203,12 +203,12 @@
         {
           label: "Romance y elegancia",
           hint: "Como volver a enamorarnos con estilo",
-          scores: { sma: 2, gto: 1, maz: 0 },
+          scores: { sma: 3, gto: 1, maz: 0 },
         },
         {
           label: "Alegría y complicidad",
           hint: "Risas que se nos pegan al corazón",
-          scores: { sma: 0, gto: 2, maz: 0 },
+          scores: { sma: 0, gto: 3, maz: 0 },
         },
         {
           label: "Calma profunda y cercanía",
@@ -317,9 +317,11 @@
   }
 
   function pickWinner() {
-    const entries = Object.entries(scores);
-    entries.sort((a, b) => b[1] - a[1]);
-    return DESTINATIONS[entries[0][0]];
+    // Mazamitla solo gana con casi todas las respuestas de bosque (mín. 4 de 5).
+    if (scores.maz >= 8) {
+      return DESTINATIONS.maz;
+    }
+    return scores.sma >= scores.gto ? DESTINATIONS.sma : DESTINATIONS.gto;
   }
 
   function notifySecret(dest) {
