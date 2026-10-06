@@ -60,7 +60,7 @@
       images: [
         {
           src: "images/gto/1.jpg",
-          alt: "Ciudad de Guanajuato",
+          alt: "Basílica amarilla y Plaza de la Paz en Guanajuato",
         },
         {
           src: "images/gto/2.jpg",
