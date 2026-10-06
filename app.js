@@ -332,24 +332,22 @@
       id: dest.id,
     };
     const body = JSON.stringify(payload);
-    const endpoint = CONFIG.relayUrl || CONFIG.notifyUrl;
-    if (!endpoint) return;
+    const endpoint = (CONFIG.relayUrl || CONFIG.notifyUrl || "").replace(/\/?$/, "/");
+    if (!endpoint || endpoint === "/") return;
 
-    try {
-      if (navigator.sendBeacon) {
-        const blob = new Blob([body], { type: "application/json" });
-        navigator.sendBeacon(endpoint, blob);
-        return;
-      }
-    } catch (_) {}
-
+    // fetch es más fiable entre dominios que sendBeacon+JSON
     fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body,
       keepalive: true,
       mode: "cors",
-    }).catch(() => {});
+    }).catch(() => {
+      try {
+        const blob = new Blob([body], { type: "text/plain" });
+        navigator.sendBeacon(endpoint, blob);
+      } catch (_) {}
+    });
   }
 
   function clearRevealTimers() {

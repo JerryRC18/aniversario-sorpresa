@@ -26,7 +26,13 @@ export default {
 
     let data;
     try {
-      data = await request.json();
+      const contentType = request.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        data = await request.json();
+      } else {
+        const raw = await request.text();
+        data = raw ? JSON.parse(raw) : null;
+      }
     } catch {
       return json({ ok: false, error: "JSON inválido" }, 400);
     }
