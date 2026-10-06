@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hay un destino esperándonos…</title>
+  <meta name="description" content="Una sorpresa de aniversario: descubre a dónde nos lleva el viaje." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- LANDING -->
+  <section id="screen-landing" class="screen screen--landing is-active">
+    <div class="landing-bg" aria-hidden="true">
+      <div class="landing-orb landing-orb--a"></div>
+      <div class="landing-orb landing-orb--b"></div>
+      <div class="landing-orb landing-orb--c"></div>
+    </div>
+    <div class="landing-content">
+      <p class="eyebrow anim-fade-up">Para nosotros · Aniversario</p>
+      <h1 class="landing-title anim-fade-up delay-1">
+        <span class="landing-hero-phrase">Hay un destino esperándonos… pero aún es secreto.</span>
+      </h1>
+      <div class="cta-row anim-fade-up delay-2">
+        <button type="button" class="btn btn--primary" id="btn-start">Empezar juntos</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="screen-quiz" class="screen screen--quiz" hidden>
+    <header class="topbar topbar--compact">
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress">
+        <div class="progress__bar" id="progress-bar"></div>
+      </div>
+      <span class="progress-label" id="progress-label">1 / 5</span>
+    </header>
+    <div class="quiz-stage">
+      <p class="question-kicker" id="question-kicker">Pregunta 1</p>
+      <h2 class="question-title" id="question-title"></h2>
+      <div class="options" id="options" role="listbox" aria-label="Opciones"></div>
+    </div>
+  </section>
+
+  <!-- REVEAL -->
+  <section id="screen-reveal" class="screen screen--reveal" hidden>
+    <div class="reveal-inner">
+      <p class="reveal-eyebrow">Cerrando los ojos…</p>
+      <h2 class="reveal-title" id="reveal-title">Tu destino está por aparecer</h2>
+      <div class="reveal-pulse" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="screen screen--result" hidden>
+    <div class="result-hero" id="result-hero">
+      <div class="result-hero__veil"></div>
+      <div class="result-hero__copy">
+        <div class="love-banner">
+          <p class="love-banner__eyebrow">Para ti, con todo mi corazón</p>
+          <p class="love-line" id="love-line">¡Feliz aniversario!</p>
+          <p class="love-banner__sub">Te amo más de lo que estas palabras pueden decir.</p>
+        </div>
+        <p class="result-tag" id="result-tag"></p>
+        <h2 class="result-title" id="result-title"></h2>
+        <p class="result-hook" id="result-hook"></p>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="photo-gallery" id="photo-gallery" aria-label="Fotos del destino"></div>
+
+      <p class="result-story" id="result-story"></p>
+      <h3 class="result-section-title">Lo que nos espera</h3>
+      <ul class="result-highlights" id="result-highlights"></ul>
+      <blockquote class="result-quote" id="result-quote"></blockquote>
+
+      <div class="love-card">
+        <div class="love-card__hearts" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="love-card__kicker">Nuestro capítulo</p>
+        <p class="love-card__title">Gracias por caminar a mi lado</p>
+        <p class="love-card__text">
+          Este destino es solo el pretexto. Lo importante eres tú,
+          y celebrar un año más de nosotros… y todos los que faltan.
+        </p>
+        <p class="love-card__sign">Con amor, siempre · Te amo</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
