@@ -6,7 +6,7 @@
    */
   const CONFIG = {
     notifyUrl: "",
-    relayUrl: "", // se completa tras desplegar el worker
+    relayUrl: "https://wispy-lab-8106.jesusgrobles9.workers.dev/",
   };
 
   const DESTINATIONS = {
